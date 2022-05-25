@@ -1,0 +1,321 @@
+# Python Inheritance :
+ 
+1. Inheritance provides code reusability to the program because we can use an existing class to create a new class instead of creating it from scratch.
+2. In inheritance, the child class acquires the properties and can access all the data members and functions defined in the parent class. 
+3. A child class can also provide its specific implementation to the functions of the parent class.
+ 
+ *a derived class can inherit base class by just mentioning the base in the bracket after the derived class name
+ 
+ Syntax
+class derived-class(base class):  
+    <class-suite> 
+ 
+# A class can inherit multiple classes by mentioning all of them inside the bracket. Consider the following syntax. 
+ 
+ Syntax
+class derive-class(<base class 1>, <base class 2>, ..... <base class n>):  
+    <class - suite> 
+ 
+ class Animal:  
+    def speak(self):  
+        print("Animal Speaking")  
+#child class Dog inherits the base class Animal  
+class Dog(Animal):  
+    def bark(self):  
+        print("dog barking")  
+d = Dog()  
+d.bark()  
+d.speak()  
+ ===========================================
+# Python Multi-Level inheritance
+Multi-Level inheritance is possible in python like other object-oriented languages. 
+Multi-level inheritance is archived when a derived class inherits another derived class. 
+There is no limit on the number of levels up to which, the multi-level inheritance is archived in python.
+
+
+ Syntax
+class class1:  
+    <class-suite>   
+class class2(class1):  
+    <class suite>  
+class class3(class2):  
+    <class suite>
+ 
+class Animal:  
+    def speak(self):  
+        print("Animal Speaking")  
+#The child class Dog inherits the base class Animal  
+class Dog(Animal):  
+    def bark(self):  
+        print("dog barking")  
+#The child class Dogchild inherits another child class Dog  
+class DogChild(Dog):  
+    def eat(self):  
+        print("Eating bread...")  
+d = DogChild()  
+d.bark()  
+d.speak()  
+d.eat()
+
+Output:
+dog barking
+Animal Speaking
+Eating bread...
+===================
+# Python Multiple inheritance
+Python provides us the flexibility to inherit **multiple base classes in the child class.
+
+class Base1:  
+    <class-suite>  
+  
+class Base2:  
+    <class-suite>  
+.  
+.  
+.  
+class BaseN:  
+    <class-suite>  
+  
+class Derived(Base1, Base2, ...... BaseN):  
+    <class-suite>
+------
+Example
+class Calculation1:  
+    def Summation(self,a,b):  
+        return a+b;  
+class Calculation2:  
+    def Multiplication(self,a,b):  
+        return a*b;  
+class Derived(Calculation1,Calculation2):  
+    def Divide(self,a,b):  
+        return a/b;  
+d = Derived()  
+print(d.Summation(10,20))  
+print(d.Multiplication(10,20))  
+print(d.Divide(10,20))  
+
+Output:
+30
+200
+0.5
+-------------
+# *Method Overriding
+We can provide some specific implementation of the parent class method in our child class. 
+When the parent class method is defined in the child class with some specific implementation, then the concept is called method overriding.
+We may need to perform method overriding in the scenario where the different definition of a parent class method is needed in the child class.
+------
+allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes. When a method in a subclass has the same name, same parameters or signature and same return type(or sub-type) as a method in its super-class, then the method in the subclass is said to override the method in the super-class.
+
+# Python program to demonstrate 
+# method overriding
+  
+  
+# Defining parent class
+class Parent():    
+    # Constructor
+    def __init__(self):
+        self.value = "Inside Parent"
+          
+    # Parent's show method
+    def show(self):
+        print(self.value)       
+# Defining child class
+class Child(Parent):    
+    # Constructor
+    def __init__(self):
+        self.value = "Inside Child"
+          
+    # Child's show method
+    def show(self):
+        print(self.value) 
+# Driver's code
+obj1 = Parent()  **
+obj2 = Child()
+  
+obj1.show()
+obj2.show()
+========================
+# Method overloading :
+What is method overloading in Python?
+Method Overloading is the class having methods that are the same name with different arguments. 
+Arguments different will be based on a number of arguments and types of arguments. 
+It is used in a single class. It is also used to write the code clarity as well as reduce complexity.
+
+# What is method overloading
+**Method overloading in a class means having more than one methods with same name but with different number or types of arguments.
+
+# Is method overloading possible in Python?
+python does not support method overloading by default. The problem with method overloading in Python is that we may overload
+the methods but can only use the latest defined method.
+
+# Why is method overloading not possible in Python?
+Python does not support method overloading, that is, it is not possible to **define more than one method with the same name **in a class in python. 
+This is because method arguments in python do not have a type. A method accepting one argument can be called with an integer value, a string or a double.
+
+class OverloadDemo: 
+  # define single argument method 
+  def method(self, a): 
+    print(a)  
+# create object of class 
+obj = OverloadDemo() 
+# call method with integer argument 
+obj.method(5) 
+# call method with string argument 
+obj.method('codippa') 
+# call method with double argument 
+obj.method(10.2)
+
+Output of above code will be
+5
+codippa
+10.2
+========================
+# Abstraction in Python
+Abstraction is used to hide the internal functionality of the function from the users. 
+The users only interact with the basic implementation of the function, but inner working is hidden. 
+User is familiar with that **"what function does" but they don't know **"how it does."
+
+In simple words, we all use the smartphone and very much familiar with its functions such as camera, voice-recorder, call-dialing, etc., 
+but we don't know how these operations are happening in the background.
+
+# Why Abstraction is Important?
+In Python, an abstraction is used to hide the irrelevant data/class in order to reduce the complexity. 
+It also enhances the application efficiency. Next, we will learn how we can achieve abstraction using the Python program.
+
+# Abstraction classes in Python
+In Python, abstraction can be achieved by using **abstract classes and **interfaces.
+
+A class that consists of one or more abstract method is called the **abstract class. 
+**Abstract methods do not contain their implementation. Abstract class can be inherited by the subclass 
+and abstract method gets its definition in the subclass. Abstraction classes are meant to be the blueprint
+of the other class. An abstract class can be useful when we are designing large functions. 
+An abstract class is also helpful to provide the standard interface for different implementations of components. 
+
+Python provides the abc module to use the abstraction in the Python program. Let's see the following syntax.
+from abc import ABC  
+class ClassName(ABC):  
+We import the ABC class from the abc module.
+
+# Abstract Base Classes
+An abstract base class is the common application program of the interface for a set of subclasses. 
+It can be used by the third-party, which will provide the implementations such as with plugins. 
+It is also beneficial when we work with the large code-base hard to remember all the classes.
+ 
+ 
+# Working of the Abstract Classes
+Unlike the other high-level language, Python doesn't provide the abstract class itself. 
+We need to import the abc module, which provides the base for defining Abstract Base classes (ABC). 
+The ABC works by decorating methods of the base class as abstract. It registers concrete classes as the implementation of the abstract base.
+We use the @abstractmethod decorator to define an abstract method or if we don't provide the definition to the method, 
+it automatically becomes the abstract method. 
+
+Let's understand the following example.
+# Python program demonstrate  
+# abstract base class work   
+from abc import ABC, abstractmethod   
+class Car(ABC):   
+    def mileage(self):   
+        pass   
+class Tesla(Car):   
+    def mileage(self):   
+        print("The mileage is 30kmph")   
+class Suzuki(Car):   
+    def mileage(self):   
+        print("The mileage is 25kmph ")   
+class Duster(Car):   
+     def mileage(self):   
+          print("The mileage is 24kmph ")    
+class Renault(Car):   
+    def mileage(self):   
+            print("The mileage is 27kmph ")         
+# Driver code   
+t= Tesla ()   
+t.mileage()   
+
+r = Renault()   
+r.mileage()   
+  
+s = Suzuki()   
+s.mileage()   
+d = Duster()   
+d.mileage()  
+
+Output:
+The mileage is 30kmph
+The mileage is 27kmph 
+The mileage is 25kmph 
+The mileage is 24kmph
+
+Explanation -
+In the above code, we have imported the abc module to create the abstract base class. 
+We created the Car class that inherited the ABC class and defined an abstract method named mileage(). 
+We have then inherited the base class from the three different subclasses and implemented the abstract method differently. 
+We created the objects to call the abstract method.
+
+Let's understand another example.
+
+# Python program to define   
+# abstract class  
+  
+from abc import ABC  
+  
+class Polygon(ABC):   
+   # abstract method   
+   def sides(self):   
+      pass   
+class Triangle(Polygon):       
+   def sides(self):   
+      print("Triangle has 3 sides")   
+class Pentagon(Polygon):      
+   def sides(self):   
+      print("Pentagon has 5 sides")   
+class Hexagon(Polygon):   
+   def sides(self):   
+      print("Hexagon has 6 sides")   
+  
+class square(Polygon):   
+  
+   def sides(self):   
+      print("I have 4 sides")   
+  
+# Driver code   
+t = Triangle()   
+t.sides()   
+  
+s = square()   
+s.sides()   
+  
+p = Pentagon()   
+p.sides()   
+  
+k = Hexagon()   
+K.sides()   
+Output:
+
+Triangle has 3 sides
+Square has 4 sides
+Pentagon has 5 sides
+Hexagon has 6 sides
+Explanation -
+
+In the above code, we have defined the abstract base class named Polygon and we also defined the abstract method. This base class inherited by the various subclasses. We implemented the abstract method in each subclass. We created the object of the subclasses and invoke the sides() method. The hidden implementations for the sides() method inside the each subclass comes into play. The abstract method sides() method, defined in the abstract class, is never invoked.
+ 
+#Points to Remember
+Below are the points which we should remember about the abstract base class in Python.
+
+1. An Abstract class can contain the both *method normal and *abstract method.
+**2. An Abstract **cannot be instantiated; we cannot create objects for the abstract class.
+3. Abstraction is essential to hide the core functionality from the users. 
+4. We have covered the all the basic concepts of Abstraction in Python.
+ 
+ ========================================================================================================================================
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
